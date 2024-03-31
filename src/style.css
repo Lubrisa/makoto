@@ -40,4 +40,13 @@ header div.vr {
     background-image: url("https://img.freepik.com/free-photo/japanese-food-cooking_23-2149428665.jpg");
   }
 }
+
+/* FOOTER */
+ul li {
+  list-style-type: none;
+}
+
+footer div.vr {
+  color: white;
+}
 /* --- */
