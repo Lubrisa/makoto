@@ -1,3 +1,22 @@
+@charset "UTF-8";
+
+/* global variables */
+:root {
+  --bs-primary: #fb0021;
+  --bs-secondary: #000000;
+}
+
+/* typography */
 .brand-font {
   font-family: "Klee One", var(--bs-body-font-family);
+}
+
+/* sections styling */
+header {
+  position: sticky;
+  top: 0px;
+}
+
+header div.vr {
+  color: white;
 }
