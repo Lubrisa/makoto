@@ -26,6 +26,10 @@ header div.vr {
   color: white;
 }
 
+.nav-link:hover {
+  color: var(--bs-primary) !important;
+}
+
 /* MENU */
 #menu-options {
   background-image: url("https://www.saga.co.uk/contentlibrary/saga/publishing/verticals/travel/destinations/asia/sushi.jpg");
