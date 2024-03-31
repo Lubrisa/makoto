@@ -19,10 +19,25 @@
 header {
   position: sticky;
   top: 0px;
+  z-index: 1100;
 }
 
 header div.vr {
   color: white;
 }
 
+/* MENU */
+#menu-options {
+  background-image: url("https://www.saga.co.uk/contentlibrary/saga/publishing/verticals/travel/destinations/asia/sushi.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  background-blend-mode: overlay;
+}
+
+@media (max-width: 575px) {
+  #menu-options {
+    background-image: url("https://img.freepik.com/free-photo/japanese-food-cooking_23-2149428665.jpg");
+  }
+}
 /* --- */
