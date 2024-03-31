@@ -5,13 +5,17 @@
   --bs-primary: #fb0021;
   --bs-secondary: #000000;
 }
+/* --- */
 
 /* typography */
 .brand-font {
   font-family: "Klee One", var(--bs-body-font-family);
 }
+/* --- */
 
 /* sections styling */
+
+/* HEADER */
 header {
   position: sticky;
   top: 0px;
@@ -20,3 +24,5 @@ header {
 header div.vr {
   color: white;
 }
+
+/* --- */
