@@ -107,155 +107,104 @@
 
     <main>
       <!-- form section -->
-      <section id="form" class="mt-4">
-        <h1 class="brand-font fw-bold text-decoration-underline text-center">
+      <section id="form" class="container">
+        <h1 class="col brand-font fw-bold text-decoration-underline text-center mt-4">
           Finalize seu pedido!
         </h1>
 
-        <!-- form using POST as the http method -->
-        <form
-          action="POST"
-          class="container border border-black border-2 rounded mt-5"
-        >
-          <!-- row for the name and phone inputs -->
-          <div class="row mt-5 mb-3 mx-2">
-            <!-- name collumn -->
-            <div class="col-12 col-sm-6">
-              <!-- label naming the name input field -->
-              <label for="name" class="form-label">Nome</label>
-              <!-- text input -->
-              <input
-                type="text"
-                name="name"
-                id="name"
-                placeholder="John Doe"
-                required
-                class="form-control"
-              />
+        <div class="row justify-content-center align-items-start gap-4 px-4 mt-5">
+          <!-- form using POST as the http method -->
+          <form
+            action="POST"
+            class="col-12 col-xg-5 border border-black border-2 rounded"
+          >
+            <!-- row for the name and phone inputs -->
+            <div class="row mt-3 mb-3 mx-2">
+              <!-- name collumn -->
+              <div class="col-12 col-md-6">
+                <!-- label naming the name input field -->
+                <label for="name" class="form-label">Nome</label>
+                <!-- text input -->
+                <input
+                  type="text"
+                  name="name"
+                  id="name"
+                  placeholder="John Doe"
+                  required
+                  class="form-control"
+                />
+              </div>
+  
+              <div class="col-12 col-md-6">
+                <label for="phone" class="form-label">Telefone</label>
+                <input
+                  type="number"
+                  name="phone"
+                  id="phone"
+                  placeholder="(XX) XXXX-XXXX"
+                  required
+                  class="form-control"
+                />
+              </div>
             </div>
-
-            <div class="col-12 col-sm-6">
-              <label for="phone" class="form-label">Telefone</label>
-              <input
-                type="number"
-                name="phone"
-                id="phone"
-                placeholder="(XX) XXXX-XXXX"
-                required
-                class="form-control"
-              />
+  
+            <!-- row for the address inputs -->
+            <div class="row mx-2 mb-3">
+              <!-- main address collumn -->
+              <div class="col-12 col-md-6">
+                <label for="address" class="form-label">Endereço</label>
+                <input
+                  type="text"
+                  name="address"
+                  id="address"
+                  placeholder="Elm Street, 123"
+                  required
+                  class="form-control"
+                />
+              </div>
+  
+              <!-- address complement -->
+              <div class="col-12 col-md-6">
+                <label for="address2" required class="form-label"
+                  >Complemento</label
+                >
+                <input
+                  type="text"
+                  name="address2"
+                  id="address2"
+                  placeholder="ap. 27"
+                  class="form-control"
+                />
+              </div>
             </div>
-          </div>
-
-          <!-- row for the address inputs -->
-          <div class="row mx-2 mb-3">
-            <!-- main address collumn -->
-            <div class="col-12 col-sm-6">
-              <label for="address" class="form-label">Endereço</label>
-              <input
-                type="text"
-                name="address"
-                id="address"
-                placeholder="Elm Street, 123"
-                required
-                class="form-control"
-              />
+  
+            <!-- submit row -->
+            <div class="row d-flex align-items-center">
+              <!-- submit button -->
+              <div class="col-6 mb-3">
+                <button type="submit" class="btn btn-danger fs-4 ms-5">
+                  Finalizar pedido
+                </button>
+              </div>
+  
+              <div class="col-6 d-flex align-items-center">
+                <p class="fs-4">Valor do Pedido: R$<span>179,97</span></p>
+              </div>
             </div>
-
-            <!-- address complement -->
-            <div class="col-12 col-sm-6">
-              <label for="address2" required class="form-label"
-                >Complemento</label
-              >
-              <input
-                type="text"
-                name="address2"
-                id="address2"
-                placeholder="ap. 27"
-                class="form-control"
-              />
-            </div>
-          </div>
-
-          <!-- row for the credit card info -->
-          <div class="row mx-2 mb-4 d-flex justify-content-center">
-            <!-- card number collumn -->
-            <div class="col-12 col-sm-6 col-md-5">
-              <label for="card-number" required class="form-label"
-                >Número do Cartão</label
-              >
-              <!-- number input -->
-              <input
-                type="number"
-                name="card-number"
-                id="card-number"
-                placeholder="XXXX XXXX XXXX XXXX"
-                min="1000000000000000"
-                minlength="16"
-                maxlength="16"
-                required
-                class="form-control"
-              />
-            </div>
-
-            <!-- card expiration date collumn -->
-            <div class="col-12 col-sm-6 col-md-4">
-              <label for="expiration-date" class="form-label"
-                >Data de Expiração</label
-              >
-              <input
-                type="text"
-                name="expiration-date"
-                id="expiration-date"
-                placeholder="MM/YY"
-                required
-                class="form-control"
-              />
-            </div>
-
-            <!-- card cvv collumn -->
-            <div class="col-12 col-sm-6 col-md-3">
-              <label for="cvv" class="form-label">CVV</label>
-              <input
-                type="number"
-                name="cvv"
-                id="cvv"
-                placeholder="XXX"
-                min="100"
-                minlength="3"
-                maxlength="3"
-                required
-                class="form-control"
-              />
-            </div>
-          </div>
-
-          <div class="row border border-black rounded mx-5 mb-3">
+          </form>
+  
+          <div class="col-12 col-xg-6 border border-black border-2 rounded">
             <h3 class="mt-2 text-center mb-3">
-              Revise seu pedido antes de finalizar sua compra
+              Seu carrinho
             </h3>
             <ol class="col border-top border-black fs-5 mx-4">
-              <li class="border-bottom border-dark py-3">Mix<span></span></li>
-              <li class="border-bottom border-dark py-3">Lula a dorê</li>
-              <li class="border-bottom border-dark py-3">Sashimi com temaki</li>
-              <li class="border-bottom border-dark py-3">Temaki</li>
+              <li class="border-bottom border-dark py-3"><span>Mix</span><span></span></li>
+              <li class="border-bottom border-dark py-3"><span>Lula a dorê</span><span></span></li>
+              <li class="border-bottom border-dark py-3"><span>Sashimi com temaki</span><span></span></li>
+              <li class="pt-3"><span>Temaki</span><span></span></li>
             </ol>
           </div>
-
-          <!-- submit row -->
-          <div class="row">
-            <!-- submit button -->
-            <div class="col-6 mb-3">
-              <button type="submit" class="btn btn-danger fs-4 ms-5">
-                Finalizar pedido
-              </button>
-            </div>
-
-            <div class="col-6 d-flex align-items-center">
-              <p class="fs-4">Valor do Pedido: R$<span>179,97</span></p>
-            </div>
-          </div>
-        </form>
+        </div>
       </section>
     </main>
 
