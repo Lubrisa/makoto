@@ -117,10 +117,10 @@
           action="POST"
           class="container border border-black border-2 rounded mt-5"
         >
-          <!-- row for the name, email and order date inputs -->
+          <!-- row for the name and phone inputs -->
           <div class="row mt-5 mb-3 mx-2">
             <!-- name collumn -->
-            <div class="col">
+            <div class="col-12 col-sm-6">
               <!-- label naming the name input field -->
               <label for="name" class="form-label">Nome</label>
               <!-- text input -->
@@ -134,37 +134,8 @@
               />
             </div>
 
-            <!-- email collumn -->
-            <div class="col">
-              <label for="email" class="form-label">Email</label>
-              <input
-                type="email"
-                name="email"
-                id="email"
-                placeholder="seuemail@exemplo.com"
-                required
-                class="form-control"
-              />
-            </div>
-
-            <!-- date collumn -->
-            <div class="col">
-              <label for="date" class="form-label">Data</label>
-              <!-- date input -->
-              <input
-                type="date"
-                name="date"
-                id="date"
-                required
-                class="form-control"
-              />
-            </div>
-          </div>
-
-          <!-- row for the cellphone and password info -->
-          <div class="row mx-2 mb-3">
-            <div class="col">
-              <label for="phone">Telefone</label>
+            <div class="col-12 col-sm-6">
+              <label for="phone" class="form-label">Telefone</label>
               <input
                 type="number"
                 name="phone"
@@ -174,25 +145,12 @@
                 class="form-control"
               />
             </div>
-
-            <div class="col">
-              <label for="password">Senha</label>
-              <input
-                type="password"
-                name="password"
-                id="password"
-                placeholder="********"
-                minlength="8"
-                required
-                class="form-control"
-              />
-            </div>
           </div>
 
           <!-- row for the address inputs -->
           <div class="row mx-2 mb-3">
             <!-- main address collumn -->
-            <div class="col">
+            <div class="col-12 col-sm-6">
               <label for="address" class="form-label">Endereço</label>
               <input
                 type="text"
@@ -205,7 +163,7 @@
             </div>
 
             <!-- address complement -->
-            <div class="col">
+            <div class="col-12 col-sm-6">
               <label for="address2" required class="form-label"
                 >Complemento</label
               >
@@ -220,9 +178,9 @@
           </div>
 
           <!-- row for the credit card info -->
-          <div class="row mx-2 mb-4">
+          <div class="row mx-2 mb-4 d-flex justify-content-center">
             <!-- card number collumn -->
-            <div class="col">
+            <div class="col-12 col-sm-6 col-md-5">
               <label for="card-number" required class="form-label"
                 >Número do Cartão</label
               >
@@ -241,7 +199,7 @@
             </div>
 
             <!-- card expiration date collumn -->
-            <div class="col">
+            <div class="col-12 col-sm-6 col-md-4">
               <label for="expiration-date" class="form-label"
                 >Data de Expiração</label
               >
@@ -256,7 +214,7 @@
             </div>
 
             <!-- card cvv collumn -->
-            <div class="col">
+            <div class="col-12 col-sm-6 col-md-3">
               <label for="cvv" class="form-label">CVV</label>
               <input
                 type="number"
@@ -274,7 +232,7 @@
 
           <div class="row border border-black rounded mx-5 mb-3">
             <h3 class="mt-2 text-center mb-3">
-              Revise seu pedido antes de finalizar a compra
+              Revise seu pedido antes de finalizar sua compra
             </h3>
             <ol class="col border-top border-black fs-5 mx-4">
               <li class="border-bottom border-dark py-3">Mix<span></span></li>
