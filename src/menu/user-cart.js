@@ -23,68 +23,68 @@ export class UserCart {
     });
   }
 
-  increaseCartItemQuantity(menuItemId) {
-    if (menuItemId === undefined)
+  increaseCartItemQuantity(menuItem) {
+    if (menuItem === undefined)
       throw new TypeError(
         "Missing parameter in the increase of a cart item quantity. You must give a menu item id."
       );
-    if (typeof menuItemId !== "number")
+    if (!(menuItem instanceof MenuItem))
       throw new TypeError(
-        "Invalid type for menu item id, this field must be a number."
+        "Invalid type for menu item id, this field must be a instance of MenuItem."
       );
 
-    if (!this.#cartItems.has(menuItemId)) this.addItemToCart(menuItemId);
-    else this.#cartItems.set(menuItemId, this.#cartItems.get(menuItemId) + 1);
+    if (this.addItemToCart(menuItem))
+      this.#cartItems.set(menuItem, this.#cartItems.get(menuItem) + 1);
   }
 
-  decreaseCartItemQuantity(menuItemId) {
-    if (menuItemId === undefined)
+  decreaseCartItemQuantity(menuItem) {
+    if (menuItem === undefined)
       throw new TypeError(
         "Missing parameter in the decrease of a cart item quantity. You must give a menu item id."
       );
-    if (typeof menuItemId !== "number")
+    if (typeof menuItem !== "number")
       throw new TypeError(
         "Invalid type for menu item id, this field must be a number."
       );
 
-    if (!this.#cartItems.has(menuItemId))
+    if (!this.#cartItems.has(menuItem))
       throw new Error(
         "The item you are trying to decrease the quantity does not exist in the cart."
       );
-    else if (this.#cartItems.get(menuItemId) === 1)
-      this.removeItemFromCart(menuItemId);
-    else this.#cartItems.set(menuItemId, this.#cartItems.get(menuItemId) - 1);
+    else if (this.#cartItems.get(menuItem) === 1)
+      this.removeItemFromCart(menuItem);
+    else this.#cartItems.set(menuItem, this.#cartItems.get(menuItem) - 1);
   }
 
-  addItemToCart(menuItemId) {
-    if (menuItemId === undefined)
+  addItemToCart(menuItem) {
+    if (menuItem === undefined)
       throw new TypeError(
         "Missing parameter in the addition of a new item to cart. You must give a menu item instance."
       );
-    if (typeof menuItemId !== "number")
+    if (!(menuItem instanceof MenuItem))
       throw new TypeError(
         "Invalid type for menu item, this field must be an instance of MenuItem."
       );
 
-    if (this.#cartItems.has(menuItemId)) return;
-    else this.#cartItems.set(menuItemId, 1);
+    if (this.#cartItems.has(menuItem)) return true;
+    else this.#cartItems.set(menuItem, 1);
   }
 
-  removeItemFromCart(menuItemId) {
-    if (menuItemId === undefined)
+  removeItemFromCart(menuItem) {
+    if (menuItem === undefined)
       throw new TypeError(
         "Missing parameter in the removal of an item from the cart. You must give a menu item id."
       );
-    if (typeof menuItemId !== "number")
+    if (!(menuItem instanceof MenuItem))
       throw new TypeError(
         "Invalid type for menu item, this field must be an instance of MenuItem."
       );
 
-    if (!this.#cartItems.has(menuItemId))
+    if (!this.#cartItems.has(menuItem))
       throw new Error(
         "The item you are trying to remove from the cart does not exist."
       );
-    else this.#cartItems.delete(menuItemId);
+    else this.#cartItems.delete(menuItem);
   }
 
   addCartUpdateListener(callback) {
@@ -101,7 +101,9 @@ export class UserCart {
   }
 
   #onCartUpdate(cartItem, newItemQuantity) {
-    this.#cardUpdateListeners.forEach((listener) => listener(cartItem, newItemQuantity));
+    this.#cardUpdateListeners.forEach((listener) =>
+      listener(cartItem, newItemQuantity)
+    );
   }
 
   get cartItems() {
