@@ -4,6 +4,7 @@ import { MenuTableController } from "./menu-table-controller.js";
 
 export class UserCart {
   #cartItems = new Map();
+  #cardUpdateListeners = [];
 
   constructor(menuTableController) {
     if (menuTableController === undefined)
@@ -71,9 +72,9 @@ export class UserCart {
 
   removeItemFromCart(menuItemId) {
     if (menuItemId === undefined)
-        throw new TypeError(
-            "Missing parameter in the removal of an item from the cart. You must give a menu item id."
-        );
+      throw new TypeError(
+        "Missing parameter in the removal of an item from the cart. You must give a menu item id."
+      );
     if (typeof menuItemId !== "number")
       throw new TypeError(
         "Invalid type for menu item, this field must be an instance of MenuItem."
@@ -84,6 +85,23 @@ export class UserCart {
         "The item you are trying to remove from the cart does not exist."
       );
     else this.#cartItems.delete(menuItemId);
+  }
+
+  addCartUpdateListener(callback) {
+    if (callback === undefined)
+      throw new TypeError(
+        "Missing parameter in the addCartUpdateListener method. You must give a callback function."
+      );
+    if (typeof callback !== "function")
+      throw new TypeError(
+        "Invalid type for the callback parameter in the addCartUpdateListener method. You must give a callback function."
+      );
+
+    this.#cardUpdateListeners.push(callback);
+  }
+
+  #onCartUpdate(cartItem, newItemQuantity) {
+    this.#cardUpdateListeners.forEach((listener) => listener(cartItem, newItemQuantity));
   }
 
   get cartItems() {
