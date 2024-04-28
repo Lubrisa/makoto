@@ -12,8 +12,8 @@ export class MenuTable {
     this.#menuItems = menuItems;
   }
 
-  getMenuItems() {
-    return this.#menuItems;
+  get menuItems() {
+    return this.#menuItems.slice();
   }
 
   getMenuItemById(id) {
