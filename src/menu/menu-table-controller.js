@@ -27,7 +27,7 @@ export class MenuTableController {
     });
   }
 
-  get getMenuTableRows() {
+  get menuTableRows() {
     return this.#menuTableRows;
   }
 }
