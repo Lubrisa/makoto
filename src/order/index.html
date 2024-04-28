@@ -26,7 +26,10 @@
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
 
     <!-- stylesheets -->
     <link href="../style.css" rel="stylesheet" />
@@ -108,15 +111,19 @@
     <main>
       <!-- form section -->
       <section id="form" class="container">
-        <h1 class="col brand-font fw-bold text-decoration-underline text-center mt-4">
+        <h1
+          class="col brand-font fw-bold text-decoration-underline text-center mt-4"
+        >
           Finalize seu pedido!
         </h1>
 
-        <div class="row justify-content-center align-items-start gap-4 px-4 mt-5">
+        <div
+          class="row justify-content-center align-items-start gap-4 px-4 mt-5"
+        >
           <!-- form using POST as the http method -->
           <form
             action="POST"
-            class="col-12 col-xg-5 border border-black border-2 rounded"
+            class="col-12 col-xg-5 border border border"
           >
             <!-- row for the name and phone inputs -->
             <div class="row mt-3 mb-3 mx-2">
@@ -134,7 +141,7 @@
                   class="form-control"
                 />
               </div>
-  
+
               <div class="col-12 col-md-6">
                 <label for="phone" class="form-label">Telefone</label>
                 <input
@@ -147,7 +154,7 @@
                 />
               </div>
             </div>
-  
+
             <!-- row for the address inputs -->
             <div class="row mx-2 mb-3">
               <!-- main address collumn -->
@@ -162,7 +169,7 @@
                   class="form-control"
                 />
               </div>
-  
+
               <!-- address complement -->
               <div class="col-12 col-md-6">
                 <label for="address2" required class="form-label"
@@ -177,7 +184,7 @@
                 />
               </div>
             </div>
-  
+
             <!-- submit row -->
             <div class="row d-flex align-items-center">
               <!-- submit button -->
@@ -186,24 +193,63 @@
                   Finalizar pedido
                 </button>
               </div>
-  
+
               <div class="col-6 d-flex align-items-center">
                 <p class="fs-4">Valor do Pedido: R$<span>179,97</span></p>
               </div>
             </div>
           </form>
-  
-          <div class="col-12 col-xg-6 border border-black border-2 rounded">
-            <h3 class="mt-2 text-center mb-3">
-              Seu carrinho
-            </h3>
-            <ol class="col border-top border-black fs-5 mx-4">
-              <li class="border-bottom border-dark py-3"><span>Mix</span><span></span></li>
-              <li class="border-bottom border-dark py-3"><span>Lula a dorê</span><span></span></li>
-              <li class="border-bottom border-dark py-3"><span>Sashimi com temaki</span><span></span></li>
-              <li class="pt-3"><span>Temaki</span><span></span></li>
-            </ol>
-          </div>
+
+          <!-- order table -->
+          <table
+            class="table table-striped table-bordered table-sm col-12 col-xg-6"
+          >
+            <!-- table header (collumns names) -->
+            <thead>
+              <tr>
+                <th scope="colgroup" colspan="4" class="text-center fs-3">Seu carrinho</th>
+              </tr>
+              <!-- header row -->
+              <tr>
+                <!-- table header cell -->
+                <th scope="col">Prato</th>
+                <th scope="col">Preço Unitário</th>
+                <th scope="col">Quantidade</th>
+                <th scope="col">Preço Total</th>
+              </tr>
+            </thead>
+            <!-- table body (collumns content) -->
+            <tbody class="fs-5 table-group-divider">
+              <!-- body row -->
+              <tr>
+                <!-- name collumn cell -->
+                <td>Mix</td>
+                <!-- price collumn cell -->
+                <td>59,99</td>
+                <!-- quantity ordered -->
+                <td>1</td>
+                <td>59,99</td>
+              </tr>
+              <tr>
+                <td>Lula a dorê</td>
+                <td>59,99</td>
+                <td>1</td>
+                <td>59,99</td>
+              </tr>
+              <tr>
+                <td>Sashimi com temaki</td>
+                <td>59,99</td>
+                <td>1</td>
+                <td>59,99</td>
+              </tr>
+              <tr>
+                <td>Temaki</td>
+                <td>59,99</td>
+                <td>1</td>
+                <td>59,99</td>
+              </tr>
+            </tbody>
+          </table>
         </div>
       </section>
     </main>
