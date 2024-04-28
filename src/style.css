@@ -28,6 +28,9 @@ header div.vr {
 
 .nav-link:hover {
   color: var(--bs-primary) !important;
+
+  text-decoration: underline;
+  text-decoration-color: var(--bs-primary) !important;
 }
 
 /* MENU */
