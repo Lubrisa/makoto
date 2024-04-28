@@ -106,7 +106,17 @@ export class UserCart {
     );
   }
 
-  getCardItemQuantity(menuItem) {
+  getCartItemQuantity(menuItem) {
+    if (menuItem === undefined)
+      throw new TypeError(
+        "Missing parameter in the getCardItemQuantity method. You must give a menu item instance."
+      );
+    if (!(menuItem instanceof MenuItem))
+      throw new TypeError(
+        "Invalid type for menu item, this field must be an instance of MenuItem."
+      );
+
+    if (!this.#cartItems.has(menuItem)) return 0;
     return this.#cartItems.get(menuItem);
   }
 
