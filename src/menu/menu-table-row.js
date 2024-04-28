@@ -41,7 +41,6 @@ export class MenuTableRow {
     const removeButton = document.createElement("button");
     const removeButtonIcon = document.createElement("i");
 
-    tableRow.setAttribute("data-id", this.#menuItem.id);
     nameCell.textContent = this.#menuItem.name;
     priceCell.textContent = this.#menuItem.price;
     quantityCell.classList.add(
@@ -60,7 +59,7 @@ export class MenuTableRow {
     );
     addButtonIcon.classList.add("bi", "bi-plus-circle");
     quantitySpan.classList.add("mx-2", "mx-md-4", "quantity-counter");
-    quantitySpan.textContent = "00";
+    quantitySpan.textContent = "0";
     removeButton.setAttribute("type", "button");
     removeButton.classList.add(
       "btn",
@@ -110,25 +109,31 @@ export class MenuTableRow {
   }
 
   #onQuantityIncrease() {
-    const quantityCount =
-      this.htmlElement.querySelector(".quantityCounter").textContent;
+    const newQuantity =
+      parseInt(
+        this.htmlElement.querySelector(".quantity-counter").textContent
+      ) + 1;
 
-    try {
-      const quantity = parseInt(quantityCount);
-      const newQuantity = quantity + 1;
-      this.htmlElement.querySelector("span").textContent =
-        newQuantity.toString();
-      this.#quantityIncreaseListeners.forEach((listener) =>
-        listener(this.#menuItem.id, newQuantity)
-      );
-    } catch (err) {
-      console.error(err);
-    }
+    this.htmlElement.querySelector("span").textContent = newQuantity.toString();
+
+    this.#quantityIncreaseListeners.forEach((listener) =>
+      listener(this.#menuItem.id)
+    );
   }
 
   #onQuantityDecrease() {
+    const currentQuantity = parseInt(
+      this.htmlElement.querySelector(".quantity-counter").textContent
+    );
+
+    if (currentQuantity === 0) return;
+
+    const newQuantity = currentQuantity - 1;
+
+    this.htmlElement.querySelector("span").textContent = newQuantity.toString();
+
     this.#quantityDecreaseListeners.forEach((listener) =>
-      listener(this.#menuItem)
+      listener(this.#menuItem.id)
     );
   }
 }
