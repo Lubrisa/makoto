@@ -106,6 +106,10 @@ export class UserCart {
     );
   }
 
+  getCardItemQuantity(menuItem) {
+    return this.#cartItems.get(menuItem);
+  }
+
   get cartItems() {
     return this.#cartItems;
   }
