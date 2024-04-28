@@ -21,22 +21,24 @@ export class MenuItem {
         "Invalid type for menu item name, this field must be a string."
       );
     else if (id < 0 || name === "" || price <= 0)
-      throw new TypeError("Invalid menu item. The id must be greater than 0, the name must not be empty and the price must be greater than 0.");
+      throw new TypeError(
+        "Invalid menu item. The id must be greater than 0, the name must not be empty and the price must be greater than 0."
+      );
 
     this.#id = id;
     this.#name = name;
     this.#price = price;
   }
 
-  get getId() {
+  get id() {
     return this.#id;
   }
 
-  get getName() {
+  get name() {
     return this.#name;
   }
 
-  get getPrice() {
+  get price() {
     return this.#price;
   }
 }
