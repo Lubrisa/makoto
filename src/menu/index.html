@@ -12,23 +12,23 @@
     />
 
     <!-- font -->
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="preconnect" href="https:fonts.googleapis.com" />
+    <link rel="preconnect" href="https:fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Klee+One&display=swap"
+      href="https:fonts.googleapis.com/css2?family=Klee+One&display=swap"
       rel="stylesheet"
     />
 
     <!-- BootStrap  -->
     <link
-      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
+      href="https:cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
     <link
       rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+      href="https:cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
     />
 
     <!-- stylesheets -->
@@ -37,10 +37,17 @@
     <!-- scripts -->
     <script
       defer
-      src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
+      src="https:cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script src="./scripts-nomodule.js" defer nomodule></script>
+    <script type="module" src="./menu-item.js"></script>
+    <script type="module" src="./menu-table.js"></script>
+    <script type="module" src="./menu-table-row.js"></script>
+    <script type="module" src="./menu-table-controller.js"></script>
+    <script type="module" src="./user-cart.js"></script>
+    <script type="module" src="scripts.js"></script>
 
     <!-- page meta -->
     <meta name="author" content="Alexsander Lopes Jose Maria" />
@@ -64,7 +71,7 @@
           data-bs-target="#pageLinks"
         >
           <svg
-            xmlns="http://www.w3.org/2000/svg"
+            xmlns="http:www.w3.org/2000/svg"
             width="32"
             height="32"
             fill="white"
@@ -135,14 +142,10 @@
             </tr>
           </thead>
           <!-- table body (collumns content) -->
-          <tbody class="fs-5 table-group-divider">
-            <!-- body row -->
-            <tr>
-              <!-- name collumn cell -->
-              <td>Mix</td>
-              <!-- price collumn cell -->
-              <td>59,99</td>
-              <!-- quantity collumn cell -->
+          <tbody class="fs-5 table-group-divider" id="menu-table">
+            <!-- <tr data-id="${menuItem.getId}">
+              <td>${menuItem.getName}</td>
+              <td>${menuItem.getPrice}</td>
               <td
                 class="d-table-cell d-flex justify-content-center align-items-center"
               >
@@ -154,166 +157,13 @@
                   <i class="bi bi-dash-circle"></i>
                 </button>
               </td>
-            </tr>
-            <tr>
-              <td>Lula a dorê</td>
-              <td>59,99</td>
-              <td
-                class="d-table-cell d-flex justify-content-center align-items-center"
-              >
-                <button type="button" class="btn btn-outline-dark btn-sm fs-5">
-                  <i class="bi bi-plus-circle"></i>
-                </button>
-                <span class="mx-2 mx-md-4">00</span>
-                <button type="button" class="btn btn-outline-dark btn-sm fs-5">
-                  <i class="bi bi-dash-circle"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>Sashimi com temaki</td>
-              <td>59,99</td>
-              <td
-                class="d-table-cell d-flex justify-content-center align-items-center"
-              >
-                <button type="button" class="btn btn-outline-dark btn-sm fs-5">
-                  <i class="bi bi-plus-circle"></i>
-                </button>
-                <span class="mx-2 mx-md-4">00</span>
-                <button type="button" class="btn btn-outline-dark btn-sm fs-5">
-                  <i class="bi bi-dash-circle"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>Filadélfia assado</td>
-              <td>59,99</td>
-              <td
-                class="d-table-cell d-flex justify-content-center align-items-center"
-              >
-                <button type="button" class="btn btn-outline-dark btn-sm fs-5">
-                  <i class="bi bi-plus-circle"></i>
-                </button>
-                <span class="mx-2 mx-md-4">00</span>
-                <button type="button" class="btn btn-outline-dark btn-sm fs-5">
-                  <i class="bi bi-dash-circle"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>Jiron</td>
-              <td>59,99</td>
-              <td
-                class="d-table-cell d-flex justify-content-center align-items-center"
-              >
-                <button type="button" class="btn btn-outline-dark btn-sm fs-5">
-                  <i class="bi bi-plus-circle"></i>
-                </button>
-                <span class="mx-2 mx-md-4">00</span>
-                <button type="button" class="btn btn-outline-dark btn-sm fs-5">
-                  <i class="bi bi-dash-circle"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>Barca de sashimi</td>
-              <td>59,99</td>
-              <td
-                class="d-table-cell d-flex justify-content-center align-items-center"
-              >
-                <button type="button" class="btn btn-outline-dark btn-sm fs-5">
-                  <i class="bi bi-plus-circle"></i>
-                </button>
-                <span class="mx-2 mx-md-4">00</span>
-                <button type="button" class="btn btn-outline-dark btn-sm fs-5">
-                  <i class="bi bi-dash-circle"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>Mix de peças</td>
-              <td>59,99</td>
-              <td
-                class="d-table-cell d-flex justify-content-center align-items-center"
-              >
-                <button type="button" class="btn btn-outline-dark btn-sm fs-5">
-                  <i class="bi bi-plus-circle"></i>
-                </button>
-                <span class="mx-2 mx-md-4">00</span>
-                <button type="button" class="btn btn-outline-dark btn-sm fs-5">
-                  <i class="bi bi-dash-circle"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>Sashimi temperado</td>
-              <td>59,99</td>
-              <td
-                class="d-table-cell d-flex justify-content-center align-items-center"
-              >
-                <button type="button" class="btn btn-outline-dark btn-sm fs-5">
-                  <i class="bi bi-plus-circle"></i>
-                </button>
-                <span class="mx-2 mx-md-4">00</span>
-                <button type="button" class="btn btn-outline-dark btn-sm fs-5">
-                  <i class="bi bi-dash-circle"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>Temaki filadelfia</td>
-              <td>59,99</td>
-              <td
-                class="d-table-cell d-flex justify-content-center align-items-center"
-              >
-                <button type="button" class="btn btn-outline-dark btn-sm fs-5">
-                  <i class="bi bi-plus-circle"></i>
-                </button>
-                <span class="mx-2 mx-md-4">00</span>
-                <button type="button" class="btn btn-outline-dark btn-sm fs-5">
-                  <i class="bi bi-dash-circle"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>Mix de sashimi</td>
-              <td>59,99</td>
-              <td
-                class="d-table-cell d-flex justify-content-center align-items-center"
-              >
-                <button type="button" class="btn btn-outline-dark btn-sm fs-5">
-                  <i class="bi bi-plus-circle"></i>
-                </button>
-                <span class="mx-2 mx-md-4">00</span>
-                <button type="button" class="btn btn-outline-dark btn-sm fs-5">
-                  <i class="bi bi-dash-circle"></i>
-                </button>
-              </td>
-            </tr>
-            <tr>
-              <td>Filadelfia</td>
-              <td>59,99</td>
-              <td
-                class="d-table-cell d-flex justify-content-center align-items-center"
-              >
-                <button type="button" class="btn btn-outline-dark btn-sm fs-5">
-                  <i class="bi bi-plus-circle"></i>
-                </button>
-                <span class="mx-2 mx-md-4">00</span>
-                <button type="button" class="btn btn-outline-dark btn-sm fs-5">
-                  <i class="bi bi-dash-circle"></i>
-                </button>
-              </td>
-            </tr>
+            </tr> -->
           </tbody>
           <tfoot class="table-group-divider fs-3" id="order-info">
             <tr>
-              <td
-                colspan="4"
-                class="text-center"
-              >
+              <td colspan="4" class="text-center">
                 <span>Custo Total: R$<span>00,00</span></span
-                ><br><a
+                ><br /><a
                   href="../order/index.html"
                   class="btn btn-danger fs-3 mt-4 mb-3"
                 >
