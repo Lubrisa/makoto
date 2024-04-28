@@ -186,8 +186,26 @@
               </div>
             </div>
 
+            <!-- payment method row -->
+            <div class="row">
+              <div class="col-8 offset-2">
+                <label for="payment-method" class="form-label">Forma de pagamento</label>
+                <select
+                  name="payment-method"
+                  id="payment-method"
+                  class="form-select"
+                  required
+                >
+                  <option value="credit">Cartão de crédito</option>
+                  <option value="debit">Cartão de débito</option>
+                  <option value="cash">Dinheiro</option>
+                  <option value="cash">Pix</option>
+                </select>
+              </div>
+            </div>
+
             <!-- submit row -->
-            <div class="row d-flex align-items-center">
+            <div class="row d-flex align-items-center mt-5">
               <!-- submit button -->
               <div class="col-6 mb-3">
                 <button type="submit" class="btn btn-danger fs-4 ms-5">
