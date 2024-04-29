@@ -35,7 +35,9 @@ export class UserCart {
 
     if (this.getCartItemQuantity(menuItem) === 0) this.addItemToCart(menuItem);
     else this.#cartItems.set(menuItem, this.getCartItemQuantity(menuItem) + 1);
-}
+
+    this.#onCartUpdate(menuItem, this.getCartItemQuantity(menuItem));
+  }
 
   decreaseCartItemQuantity(menuItem) {
     if (menuItem === undefined)
@@ -54,6 +56,8 @@ export class UserCart {
     if (this.getCartItemQuantity(menuItem) === 1)
       this.removeItemFromCart(menuItem);
     else this.#cartItems.set(menuItem, this.getCartItemQuantity(menuItem) - 1);
+
+    this.#onCartUpdate(menuItem, this.getCartItemQuantity(menuItem));
   }
 
   addItemToCart(menuItem) {
