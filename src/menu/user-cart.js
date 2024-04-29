@@ -33,27 +33,27 @@ export class UserCart {
         "Invalid type for menu item id, this field must be a instance of MenuItem."
       );
 
-    if (this.addItemToCart(menuItem))
-      this.#cartItems.set(menuItem, this.#cartItems.get(menuItem) + 1);
-  }
+    if (this.getCartItemQuantity(menuItem) === 0) this.addItemToCart(menuItem);
+    else this.#cartItems.set(menuItem, this.getCartItemQuantity(menuItem) + 1);
+}
 
   decreaseCartItemQuantity(menuItem) {
     if (menuItem === undefined)
       throw new TypeError(
         "Missing parameter in the decrease of a cart item quantity. You must give a menu item id."
       );
-    if (typeof menuItem !== "number")
+    else if (typeof menuItem !== "number")
       throw new TypeError(
         "Invalid type for menu item id, this field must be a number."
       );
-
-    if (!this.#cartItems.has(menuItem))
+    else if (!this.#cartItems.has(menuItem))
       throw new Error(
         "The item you are trying to decrease the quantity does not exist in the cart."
       );
-    else if (this.#cartItems.get(menuItem) === 1)
+
+    if (this.getCartItemQuantity(menuItem) === 1)
       this.removeItemFromCart(menuItem);
-    else this.#cartItems.set(menuItem, this.#cartItems.get(menuItem) - 1);
+    else this.#cartItems.set(menuItem, this.getCartItemQuantity(menuItem) - 1);
   }
 
   addItemToCart(menuItem) {
