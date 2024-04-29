@@ -3,6 +3,7 @@ import { MenuItem } from "./menu-item.js";
 export class MenuTableRow {
   #menuItem;
   #htmlElement;
+  #count = 0;
 
   #quantityIncreaseListeners = [];
   #quantityDecreaseListeners = [];
@@ -109,10 +110,8 @@ export class MenuTableRow {
   }
 
   increaseQuantity(quantity) {
-    const newQuantity =
-      parseInt(
-        this.htmlElement.querySelector(".quantity-counter").textContent
-      ) + 1;
+    const newQuantity = this.#count + quantity;
+    this.#count = newQuantity;
 
     this.htmlElement.querySelector("span").textContent = newQuantity.toString();
 
@@ -120,13 +119,10 @@ export class MenuTableRow {
   }
 
   decreaseQuantity(quantity) {
-    const currentQuantity = parseInt(
-      this.htmlElement.querySelector(".quantity-counter").textContent
-    );
+    if (this.#count === 0) return;
 
-    if (currentQuantity === 0) return;
-
-    const newQuantity = currentQuantity - 1;
+    const newQuantity = this.#count - 1;
+    this.#count = newQuantity;
 
     this.htmlElement.querySelector("span").textContent = newQuantity.toString();
 
