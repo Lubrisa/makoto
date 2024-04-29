@@ -20,6 +20,11 @@ export class OrderValueCounter {
 
     this.#costCounterElement = costCounterElement;
     userCart.addCartUpdateListener(this.#updateCostCounter.bind(this));
+
+    const cartItems = userCart.cartItems;
+    cartItems.forEach((quantity, menuItem) => {
+      this.#updateCostCounter(menuItem, quantity);
+    });
   }
 
   #updateCostCounter(menuItem, quantityDifference) {
