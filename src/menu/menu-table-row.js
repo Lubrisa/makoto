@@ -3,24 +3,32 @@ import { MenuItem } from "./menu-item.js";
 export class MenuTableRow {
   #menuItem;
   #htmlElement;
-  #count;
+  #count = 0;
 
   #quantityIncreaseListeners = [];
   #quantityDecreaseListeners = [];
 
-  constructor(menuItem) {
-    if (menuItem === undefined)
+  constructor(menuItem, count = 0) {
+    if (menuItem === undefined || count === undefined)
       throw new TypeError(
-        "Missing parameter in the creation of a new menu table row. You must give a menu item instance."
+        "Missing parameter in the creation of a new menu table row. You must give a menu item instance and a item count."
       );
     else if (!(menuItem instanceof MenuItem))
       throw new TypeError(
         "Invalid type for menu item, this field must be a MenuItem instance."
       );
+    else if (typeof count !== "number")
+      throw new TypeError(
+        "Invalid type for count, this field must be a number."
+      );
+    else if (count < 0)
+      throw new TypeError(
+        "Invalid value for count, this field must be a positive number."
+      );
 
     this.#menuItem = menuItem;
     this.#htmlElement = this.htmlElement;
-    this.#count = 0;
+    if (count > 0) this.increaseQuantity(count);
 
     this.htmlElement
       .querySelector(".add-button")
