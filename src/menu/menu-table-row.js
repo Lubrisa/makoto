@@ -130,7 +130,7 @@ export class MenuTableRow {
   decreaseQuantity(quantity) {
     if (this.#count === 0) return;
 
-    const newQuantity = this.#count - 1;
+    const newQuantity = this.#count - quantity;
     this.#count = newQuantity;
 
     this.htmlElement.querySelector("span").textContent = newQuantity.toString();
