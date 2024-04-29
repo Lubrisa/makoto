@@ -21,13 +21,18 @@ const menuItems = [
 
 const menuTable = new MenuTable(menuItems);
 
+const cartData = RetrieveUserCart();
+const menuItemsCount = new Map();
+cartData.forEach((cartItemData) =>
+  menuItemsCount.set(cartItemData.cartItem, cartItemData.quantity)
+);
+
 const tbodyElement = document.querySelector("#menu-table");
-const menuTableController = new MenuTableController(menuTable, tbodyElement);
-menuTableController.renderMenuTableItems(tbodyElement);
+const menuTableController = new MenuTableController(menuTable);
+menuTableController.renderMenuTableItems(tbodyElement, menuItemsCount);
 const userCart = new UserCart(menuTableController);
+
 const costCounterElement = document.querySelector("#cost-counter");
 const orderValueCounter = new OrderValueCounter(userCart, costCounterElement);
-const finishOrderButton = document.querySelector("#finish-order");
-finishOrderButton.addEventListener("click", (e) => SaveUserCart(userCart));
-const cartData = RetrieveUserCart();
-console.log(cartData);
+
+userCart.addCartUpdateListener(() => SaveUserCart(userCart));
