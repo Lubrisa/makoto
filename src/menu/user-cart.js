@@ -22,41 +22,63 @@ export class UserCart {
     });
   }
 
-  increaseCartItemQuantity(menuItem) {
-    if (menuItem === undefined)
+  increaseCartItemQuantity(menuItem, quantity = 1) {
+    if (menuItem === undefined || quantity === undefined)
       throw new TypeError(
-        "Missing parameter in the increase of a cart item quantity. You must give a menu item id."
+        "Missing parameter in the increase of a cart item quantity. You must give a menu item instance and a quantity to add."
       );
-    if (!(menuItem instanceof MenuItem))
+    else if (!(menuItem instanceof MenuItem))
       throw new TypeError(
         "Invalid type for menu item id, this field must be a instance of MenuItem."
       );
+    else if (typeof quantity !== "number")
+      throw new TypeError(
+        "Invalid type for quantity, this field must be a number."
+      );
+    else if (quantity <= 0)
+      throw new Error("You must add at least one item to the cart.");
 
     if (this.getCartItemQuantity(menuItem) === 0) this.addItemToCart(menuItem);
     else this.#cartItems.set(menuItem, this.getCartItemQuantity(menuItem) + 1);
 
-    this.#onCartUpdate(menuItem, 1);
+    this.#onCartUpdate(menuItem, quantity);
   }
 
-  decreaseCartItemQuantity(menuItem) {
-    if (menuItem === undefined)
+  decreaseCartItemQuantity(menuItem, quantity = -1) {
+    if (menuItem === undefined || quantity === undefined)
       throw new TypeError(
-        "Missing parameter in the decrease of a cart item quantity. You must give a menu item id."
+        "Missing parameter in the decrease of a cart item quantity. You must give a menu item instance and a quantity to remove."
       );
     else if (!(menuItem instanceof MenuItem))
       throw new TypeError(
         "Invalid type for menu item id, this field must be a number."
       );
+    else if (typeof quantity !== "number")
+      throw new TypeError(
+        "Invalid type for quantity, this field must be a number."
+      );
+    else if (quantity >= 0)
+      throw new Error("You must remove at least one item from the cart.");
     else if (!this.#cartItems.has(menuItem))
       throw new Error(
         "The item you are trying to decrease the quantity does not exist in the cart."
       );
 
-    if (this.getCartItemQuantity(menuItem) === 1)
+    if (this.getCartItemQuantity(menuItem) === 1) {
       this.removeItemFromCart(menuItem);
+      this.#onCartUpdate(menuItem, quantity);
+      return;
+    }
+
+    const currentQuantity = this.getCartItemQuantity(menuItem);
+    const newQuantity = currentQuantity - quantity;
+
+    if (newQuantity < 0)
+      throw new Error("You are trying to remove more items than the cart has.");
+    else if (newQuantity === 0) this.removeItemFromCart(menuItem);
     else this.#cartItems.set(menuItem, this.getCartItemQuantity(menuItem) - 1);
 
-    this.#onCartUpdate(menuItem, -1);
+    this.#onCartUpdate(menuItem, quantity);
   }
 
   addItemToCart(menuItem) {
