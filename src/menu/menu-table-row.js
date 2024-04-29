@@ -69,7 +69,7 @@ export class MenuTableRow {
     );
     addButtonIcon.classList.add("bi", "bi-plus-circle");
     quantitySpan.classList.add("mx-2", "mx-md-4", "quantity-counter");
-    quantitySpan.textContent = "0";
+    quantitySpan.textContent = this.#count.toString();
     removeButton.setAttribute("type", "button");
     removeButton.classList.add(
       "btn",
