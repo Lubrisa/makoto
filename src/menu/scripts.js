@@ -3,6 +3,8 @@ import { MenuTable } from "./menu-table.js";
 import { MenuTableController } from "./menu-table-controller.js";
 import { UserCart } from "./user-cart.js";
 import { OrderValueCounter } from "./order-value-counter.js";
+import { SaveUserCart } from "./save-user-cart.js";
+import { RetrieveUserCart } from "./retrieve-user-cart.js";
 
 const menuItems = [
   new MenuItem(0, "Mix", 59.99),
@@ -25,3 +27,7 @@ menuTableController.renderMenuTableItems(tbodyElement);
 const userCart = new UserCart(menuTableController);
 const costCounterElement = document.querySelector("#cost-counter");
 const orderValueCounter = new OrderValueCounter(userCart, costCounterElement);
+const finishOrderButton = document.querySelector("#finish-order");
+finishOrderButton.addEventListener("click", (e) => SaveUserCart(userCart));
+const cartData = RetrieveUserCart();
+console.log(cartData);
