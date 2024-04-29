@@ -8,7 +8,7 @@ export class UserCart {
   constructor(menuTableController) {
     if (menuTableController === undefined)
       throw new TypeError(
-        "Missing parameter in the creation of a new user cart. You must give a menu table controller instance."
+        "Missing parameter in the creation of a new user cart. You must give a MenuTableController instance."
       );
     if (!(menuTableController instanceof MenuTableController))
       throw new TypeError(
@@ -23,9 +23,9 @@ export class UserCart {
   }
 
   increaseCartItemQuantity(menuItem, quantity = 1) {
-    if (menuItem === undefined || quantity === undefined)
+    if (menuItem === undefined)
       throw new TypeError(
-        "Missing parameter in the increase of a cart item quantity. You must give a menu item instance and a quantity to add."
+        "Missing parameter in the increase of a cart item quantity. You must give a MenuItem instance."
       );
     else if (!(menuItem instanceof MenuItem))
       throw new TypeError(
@@ -45,9 +45,9 @@ export class UserCart {
   }
 
   decreaseCartItemQuantity(menuItem, quantity = -1) {
-    if (menuItem === undefined || quantity === undefined)
+    if (menuItem === undefined)
       throw new TypeError(
-        "Missing parameter in the decrease of a cart item quantity. You must give a menu item instance and a quantity to remove."
+        "Missing parameter in the decrease of a cart item quantity. You must give a MenuItem instance."
       );
     else if (!(menuItem instanceof MenuItem))
       throw new TypeError(
@@ -84,7 +84,7 @@ export class UserCart {
   addItemToCart(menuItem) {
     if (menuItem === undefined)
       throw new TypeError(
-        "Missing parameter in the addition of a new item to cart. You must give a menu item instance."
+        "Missing parameter in the addition of a new item to cart. You must give a MenuItem instance."
       );
     if (!(menuItem instanceof MenuItem))
       throw new TypeError(
@@ -98,7 +98,7 @@ export class UserCart {
   removeItemFromCart(menuItem) {
     if (menuItem === undefined)
       throw new TypeError(
-        "Missing parameter in the removal of an item from the cart. You must give a menu item id."
+        "Missing parameter in the removal of an item from the cart. You must give a MenuItem id."
       );
     if (!(menuItem instanceof MenuItem))
       throw new TypeError(
@@ -134,7 +134,7 @@ export class UserCart {
   getCartItemQuantity(menuItem) {
     if (menuItem === undefined)
       throw new TypeError(
-        "Missing parameter in the getCardItemQuantity method. You must give a menu item instance."
+        "Missing parameter in the getCardItemQuantity method. You must give a MenuItem instance."
       );
     if (!(menuItem instanceof MenuItem))
       throw new TypeError(
