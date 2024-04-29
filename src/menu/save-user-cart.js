@@ -14,7 +14,7 @@ export function SaveUserCart(userCart) {
   for (const cartItemAndQuantityPair of userCart.cartItems) {
     const cartItem = cartItemAndQuantityPair[0];
     const quantity = cartItemAndQuantityPair[1];
-    const cartItemAndQuantity = { cartItem, quantity };
+    const cartItemAndQuantity = { cartItem: cartItem.id, quantity };
     cartItemsAndQuantities.push(cartItemAndQuantity);
   }
   const cartItemsJSON = JSON.stringify(cartItemsAndQuantities);
