@@ -22,10 +22,10 @@ export class MenuTableRow {
 
     this.htmlElement
       .querySelector(".add-button")
-      .addEventListener("click", this.#onQuantityIncrease.bind(this));
+      .addEventListener("click", this.increaseQuantity.bind(this, 1));
     this.htmlElement
       .querySelector(".remove-button")
-      .addEventListener("click", this.#onQuantityDecrease.bind(this));
+      .addEventListener("click", this.decreaseQuantity.bind(this, 1));
   }
 
   get htmlElement() {
@@ -108,7 +108,7 @@ export class MenuTableRow {
     this.#quantityDecreaseListeners.push(callback);
   }
 
-  #onQuantityIncrease() {
+  increaseQuantity(quantity) {
     const newQuantity =
       parseInt(
         this.htmlElement.querySelector(".quantity-counter").textContent
@@ -116,12 +116,10 @@ export class MenuTableRow {
 
     this.htmlElement.querySelector("span").textContent = newQuantity.toString();
 
-    this.#quantityIncreaseListeners.forEach((listener) =>
-      listener(this.#menuItem)
-    );
+    this.#onQuantityIncrease();
   }
 
-  #onQuantityDecrease() {
+  decreaseQuantity(quantity) {
     const currentQuantity = parseInt(
       this.htmlElement.querySelector(".quantity-counter").textContent
     );
@@ -132,6 +130,16 @@ export class MenuTableRow {
 
     this.htmlElement.querySelector("span").textContent = newQuantity.toString();
 
+    this.#onQuantityDecrease();
+  }
+
+  #onQuantityIncrease() {
+    this.#quantityIncreaseListeners.forEach((listener) =>
+      listener(this.#menuItem)
+    );
+  }
+
+  #onQuantityDecrease() {
     this.#quantityDecreaseListeners.forEach((listener) =>
       listener(this.#menuItem)
     );
