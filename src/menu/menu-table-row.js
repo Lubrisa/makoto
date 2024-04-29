@@ -9,9 +9,9 @@ export class MenuTableRow {
   #quantityDecreaseListeners = [];
 
   constructor(menuItem, count = 0) {
-    if (menuItem === undefined || count === undefined)
+    if (menuItem === undefined)
       throw new TypeError(
-        "Missing parameter in the creation of a new menu table row. You must give a menu item instance and a item count."
+        "Missing parameter in the creation of a new menu table row. You must give a MenuItem instance."
       );
     else if (!(menuItem instanceof MenuItem))
       throw new TypeError(
