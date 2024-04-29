@@ -117,7 +117,7 @@ export class MenuTableRow {
     this.htmlElement.querySelector("span").textContent = newQuantity.toString();
 
     this.#quantityIncreaseListeners.forEach((listener) =>
-      listener(this.#menuItem.id)
+      listener(this.#menuItem)
     );
   }
 
@@ -133,7 +133,7 @@ export class MenuTableRow {
     this.htmlElement.querySelector("span").textContent = newQuantity.toString();
 
     this.#quantityDecreaseListeners.forEach((listener) =>
-      listener(this.#menuItem.id)
+      listener(this.#menuItem)
     );
   }
 }
