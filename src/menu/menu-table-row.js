@@ -149,4 +149,12 @@ export class MenuTableRow {
       listener(this.#menuItem)
     );
   }
+
+  get menuItem() {
+    return this.#menuItem;
+  }
+
+  get count() {
+    return this.#count;
+  }
 }
