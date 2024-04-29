@@ -1,5 +1,4 @@
 import { MenuItem } from "./menu-item.js";
-import { MenuTableRow } from "./menu-table-row.js";
 import { MenuTableController } from "./menu-table-controller.js";
 
 export class UserCart {
@@ -44,7 +43,7 @@ export class UserCart {
       throw new TypeError(
         "Missing parameter in the decrease of a cart item quantity. You must give a menu item id."
       );
-    else if (typeof menuItem !== "number")
+    else if (!(menuItem instanceof MenuItem))
       throw new TypeError(
         "Invalid type for menu item id, this field must be a number."
       );
