@@ -19,6 +19,9 @@ export class UserCart {
     tableRows.forEach((row) => {
       row.addQuantityIncreaseListener(this.increaseCartItemQuantity.bind(this));
       row.addQuantityDecreaseListener(this.decreaseCartItemQuantity.bind(this));
+
+      if (row.count > 0)
+        this.increaseCartItemQuantity(row.menuItem, row.count);
     });
   }
 
