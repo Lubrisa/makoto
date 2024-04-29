@@ -3,7 +3,7 @@ import { MenuItem } from "./menu-item.js";
 export class MenuTableRow {
   #menuItem;
   #htmlElement;
-  #count = 0;
+  #count;
 
   #quantityIncreaseListeners = [];
   #quantityDecreaseListeners = [];
@@ -20,6 +20,7 @@ export class MenuTableRow {
 
     this.#menuItem = menuItem;
     this.#htmlElement = this.htmlElement;
+    this.#count = 0;
 
     this.htmlElement
       .querySelector(".add-button")
