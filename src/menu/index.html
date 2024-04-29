@@ -47,6 +47,7 @@
     <script type="module" src="./menu-table-row.js"></script>
     <script type="module" src="./menu-table-controller.js"></script>
     <script type="module" src="./user-cart.js"></script>
+    <script type="module" src="./order-value-counter.js"></script>
     <script type="module" src="scripts.js"></script>
 
     <!-- page meta -->
@@ -162,7 +163,7 @@
           <tfoot class="table-group-divider fs-3" id="order-info">
             <tr>
               <td colspan="4" class="text-center">
-                <span>Custo Total: R$<span>00,00</span></span
+                <span>Custo Total: R$<span id="cost-counter">00,00</span></span
                 ><br /><a
                   href="../order/index.html"
                   class="btn btn-danger fs-3 mt-4 mb-3"

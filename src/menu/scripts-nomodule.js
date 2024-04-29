@@ -247,3 +247,5 @@ const tbodyElement = document.querySelector("#menu-table");
 const menuTableController = new MenuTableController(menuTable, tbodyElement);
 menuTableController.renderMenuTableItems(tbodyElement);
 const userCart = new UserCart(menuTableController);
+const costCounterElement = document.querySelector("#cost-counter");
+const orderValueCounter = new OrderValueCounter(userCart, costCounterElement);
