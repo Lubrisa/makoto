@@ -43,3 +43,13 @@ const userCartController = new UserCartController(
 userCartController.addCartUpdateListener(() => SaveUserCart(userCart));
 
 menuTableController.renderMenuTableItems(tbodyElement);
+
+const finishOrderButton = document.querySelector("#finish-order");
+const toggleOrderButton = (orderValue) => {
+  if (orderValue > 0) finishOrderButton.style.display = "";
+  else finishOrderButton.style.display = "none";
+};
+userCartController.addCartUpdateListener(() => {
+  toggleOrderButton(orderValueCounter.currentPrice);
+});
+toggleOrderButton(orderValueCounter.currentPrice);
