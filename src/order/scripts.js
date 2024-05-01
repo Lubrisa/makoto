@@ -3,6 +3,7 @@ import { retrieveUserCart } from "../user-cart/retrieve-user-cart.js";
 import { UserCart } from "../user-cart/user-cart.js";
 import { UserCartTable } from "./user-cart-table.js";
 import { OrderFormTotalCounter } from "./order-form-total-counter.js";
+import { finishOrder } from "./finish-order.js";
 
 const menuItems = [
   new MenuItem(0, "Mix", 59.99),
@@ -36,4 +37,11 @@ phoneInput.addEventListener("input", (event) => {
   value = value.replace(/^(\d{2})(\d)/g, "($1) $2");
   value = value.replace(/(\d)(\d{4})$/, "$1-$2");
   event.target.value = value;
+});
+
+document.querySelector("#finish-order-btn").addEventListener("click", (submitEvent) => {
+  submitEvent.preventDefault();
+  const paymentMethod = document.querySelector("#payment-method").value;
+  finishOrder(orderFormTotalCounter.total, paymentMethod);
+  window.location.href = "http://localhost:5500/src/order/finished";
 });
