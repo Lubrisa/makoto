@@ -23,9 +23,10 @@ const menuTable = new MenuTable(menuItems);
 
 const cartData = RetrieveUserCart();
 const menuItemsCount = new Map();
-cartData.forEach((cartItemData) =>
-  menuItemsCount.set(cartItemData.cartItem, cartItemData.quantity)
-);
+if (cartData !== null)
+  cartData.forEach((cartItemData) =>
+    menuItemsCount.set(cartItemData.cartItem, cartItemData.quantity)
+  );
 
 const tbodyElement = document.querySelector("#menu-table");
 const menuTableController = new MenuTableController(menuTable);
