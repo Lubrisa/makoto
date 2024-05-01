@@ -147,11 +147,12 @@
               <div class="col-12 col-md-6">
                 <label for="phone" class="form-label">Telefone</label>
                 <input
-                  type="number"
+                  type="text"
                   name="phone"
                   id="phone"
                   placeholder="(XX) XXXX-XXXX"
                   required
+                  pattern="\(\d{2}\) \d{4,5}-\d{4}"
                   class="form-control"
                 />
               </div>
