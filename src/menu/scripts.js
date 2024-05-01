@@ -5,7 +5,7 @@ import { UserCart } from "../user-cart/user-cart.js";
 import { UserCartController } from "../user-cart/user-cart-controller.js";
 import { OrderValueCounter } from "./order-value-counter.js";
 import { SaveUserCart } from "../user-cart/save-user-cart.js";
-import { RetrieveUserCart } from "../user-cart/retrieve-user-cart.js";
+import { retrieveUserCart } from "../user-cart/retrieve-user-cart.js";
 
 const menuItems = [
   new MenuItem(0, "Mix", 59.99),
@@ -20,11 +20,14 @@ const menuItems = [
   new MenuItem(9, "Filadelfia", 59.99),
 ];
 
-const cartData = RetrieveUserCart();
+const cartData = retrieveUserCart();
 const userCart = new UserCart(cartData, menuItems);
 
 const menuTable = new MenuTable(menuItems);
-const menuTableController = new MenuTableController(menuTable, userCart.cartItems);
+const menuTableController = new MenuTableController(
+  menuTable,
+  userCart.cartItems
+);
 const tbodyElement = document.querySelector("#menu-table");
 
 const costCounterElement = document.querySelector("#cost-counter");

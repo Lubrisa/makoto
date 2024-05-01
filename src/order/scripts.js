@@ -1,5 +1,5 @@
 import { MenuItem } from "../menu/menu-item.js";
-import { RetrieveUserCart } from "../user-cart/retrieve-user-cart.js";
+import { retrieveUserCart } from "../user-cart/retrieve-user-cart.js";
 import { UserCart } from "../user-cart/user-cart.js";
 import { UserCartTable } from "./user-cart-table.js";
 import { OrderFormTotalCounter } from "./order-form-total-counter.js";
@@ -17,7 +17,7 @@ const menuItems = [
   new MenuItem(9, "Filadelfia", 59.99),
 ];
 
-const userCartData = RetrieveUserCart();
+const userCartData = retrieveUserCart();
 const userCart = new UserCart(userCartData, menuItems);
 
 const tbodyElement = document.querySelector("#user-cart-table");

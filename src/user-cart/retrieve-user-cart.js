@@ -1,4 +1,4 @@
-export function RetrieveUserCart() {
+export function retrieveUserCart() {
   const userCart = new Map();
 
   const cartItemsJSON = localStorage.getItem("userCart");
