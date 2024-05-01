@@ -22,12 +22,11 @@ export class UserCartTableRow {
     const totalCell = document.createElement("td");
 
     const [menuItem, quantity] = this.#cartItem;
-    
+
     nameCell.textContent = menuItem.name;
     priceCell.textContent = menuItem.price;
     quantityCell.textContent = quantity;
-    totalCell.textContent =
-      menuItem.price * quantity;
+    totalCell.textContent = menuItem.price * quantity;
 
     tableRow.appendChild(nameCell);
     tableRow.appendChild(priceCell);
@@ -35,5 +34,9 @@ export class UserCartTableRow {
     tableRow.appendChild(totalCell);
 
     return tableRow;
+  }
+
+  get cartItem() {
+    return this.#cartItem;
   }
 }
