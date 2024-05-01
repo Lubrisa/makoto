@@ -5,6 +5,7 @@ import { MenuTableRow } from "./menu-table-row.js";
 export class MenuTableController {
   #menuTable;
   #menuTableRows = [];
+  #onMenuTableUpdateListeners = [];
 
   constructor(menuTable) {
     if (menuTable === undefined)
@@ -42,15 +43,40 @@ export class MenuTableController {
       );
 
     menuItems.forEach((menuItem) => {
-      let menuItemQuantity = 0;
-      if (menuItemsCount.has(menuItem.id))
-        menuItemQuantity = menuItemsCount.get(menuItem.id);
+      const menuItemQuantity = menuItemsCount.has(menuItem)
+        ? menuItemsCount.get(menuItem)
+        : 0;
 
       const menuTableRow = new MenuTableRow(menuItem, menuItemQuantity);
-      tbodyElement.appendChild(menuTableRow.htmlElement);
-
+      menuTableRow.addQuantityIncreaseListener((menuItem) => {
+        this.#onTableUpdate(menuItem, 1);
+      });
+      menuTableRow.addQuantityDecreaseListener((menuItem) => {
+        this.#onTableUpdate(menuItem, -1);
+      });
       this.#menuTableRows.push(menuTableRow);
+
+      tbodyElement.appendChild(menuTableRow.htmlElement);
     });
+  }
+
+  addMenuTableUpdateListener(callback) {
+    if (callback === undefined)
+      throw new TypeError(
+        "Missing parameter in the addMenuTableUpdateListener method. You must give a callback function."
+      );
+    else if (typeof callback !== "function")
+      throw new TypeError(
+        "Invalid type for the callback parameter in the addMenuTableUpdateListener method. You must give a callback function."
+      );
+
+    this.#onMenuTableUpdateListeners.push(callback);
+  }
+
+  #onTableUpdate(menuItem, quantityDifference) {
+    this.#onMenuTableUpdateListeners.forEach((listener) =>
+      listener(menuItem, quantityDifference)
+    );
   }
 
   get menuTableRows() {
