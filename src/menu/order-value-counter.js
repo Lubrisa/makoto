@@ -47,4 +47,8 @@ export class OrderValueCounter {
     this.#currentPrice = newPrice <= 0 ? 0 : newPrice;
     this.#costCounterElement.textContent = this.#currentPrice.toFixed(2);
   }
+
+  get currentPrice() {
+    return this.#currentPrice;
+  }
 }
