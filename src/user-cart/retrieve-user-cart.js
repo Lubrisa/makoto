@@ -1,11 +1,12 @@
 export function RetrieveUserCart() {
+  const userCart = new Map();
+
   const cartItemsJSON = localStorage.getItem("userCart");
-  if (cartItemsJSON === null) return null;
+  if (cartItemsJSON === null) return userCart;
 
   const userCartData = JSON.parse(cartItemsJSON);
-  const userCart = new Map();
-  userCartData.forEach((cartItemAndQuantity) => {
-    const { cartItem, quantity } = cartItemAndQuantity;
+  userCartData.forEach((menuItemIdAndQuantity) => {
+    const { cartItem, quantity } = menuItemIdAndQuantity;
     userCart.set(cartItem, quantity);
   });
 
