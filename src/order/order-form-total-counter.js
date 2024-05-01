@@ -1,6 +1,8 @@
 import { UserCartTable } from "./user-cart-table.js";
 
 export class OrderFormTotalCounter {
+  #total;
+
   constructor(userCartTable, totalCounterElement) {
     if (userCartTable === undefined || totalCounterElement === undefined)
       throw new TypeError(
@@ -19,8 +21,16 @@ export class OrderFormTotalCounter {
   }
 
   #updateTotalCounter(userCartTable, totalCounterElement) {
-    const total = userCartTable.tableRows.reduce((total, tableRow) => total + tableRow.total, 0);
+    const total = userCartTable.tableRows.reduce(
+      (total, tableRow) => total + tableRow.total,
+      0
+    );
 
+    this.#total = total;
     totalCounterElement.textContent = total;
+  }
+
+  get total() {
+    return this.#total;
   }
 }
