@@ -3,26 +3,36 @@ import { MenuTableController } from "../menu/menu-table-controller.js";
 
 export class UserCart {
   #cartItems = new Map();
-  #cardUpdateListeners = [];
 
-  constructor(menuTableController) {
-    if (menuTableController === undefined)
+  constructor(userCartData = new Map(), menuItems = []) {
+    if (!(userCartData instanceof Map))
       throw new TypeError(
-        "Missing parameter in the creation of a new user cart. You must give a MenuTableController instance."
+        "Invalid type for user cart data, this field must be a Map instance."
       );
-    if (!(menuTableController instanceof MenuTableController))
+    else if (!Array.isArray(menuItems))
       throw new TypeError(
-        "Invalid type for menu table controller, this field must be a MenuTableController instance."
+        "Invalid type for menu items, this field must be an array."
       );
+    else if (menuItems.some((item) => !(item instanceof MenuItem)))
+      throw new TypeError(
+        "Invalid type for menu items, all elements must be instances of MenuItem."
+      );
+    for (const key of userCartData.keys()) {
+      if (typeof key !== "number" || key < 0)
+        throw new TypeError(
+          "Invalid type for user cart data key, it must be a number equals or greater than zero."
+        );
+    }
 
-    const tableRows = menuTableController.menuTableRows;
-    tableRows.forEach((row) => {
-      row.addQuantityIncreaseListener(this.increaseCartItemQuantity.bind(this));
-      row.addQuantityDecreaseListener(this.decreaseCartItemQuantity.bind(this));
-
-      if (row.count > 0)
-        this.increaseCartItemQuantity(row.menuItem, row.count);
-    });
+    for (const menuItemIdCountPair of userCartData.entries()) {
+      const [menuItemId, count] = menuItemIdCountPair;
+      const menuItem = menuItems.find((item) => item.id === menuItemId);
+      if (menuItem === undefined)
+        throw new Error(
+          "The user cart data has a key that does not match any menu item."
+        );
+      this.increaseCartItemQuantity(menuItem, count);
+    }
   }
 
   increaseCartItemQuantity(menuItem, quantity = 1) {
@@ -41,13 +51,16 @@ export class UserCart {
     else if (quantity <= 0)
       throw new Error("You must add at least one item to the cart.");
 
-    if (this.getCartItemQuantity(menuItem) === 0) this.addItemToCart(menuItem);
-    else this.#cartItems.set(menuItem, this.getCartItemQuantity(menuItem) + 1);
-
-    this.#onCartUpdate(menuItem, quantity);
+    if (this.getCartItemQuantity(menuItem) === 0)
+      this.addItemToCart(menuItem, quantity);
+    else
+      this.#cartItems.set(
+        menuItem,
+        this.getCartItemQuantity(menuItem) + quantity
+      );
   }
 
-  decreaseCartItemQuantity(menuItem, quantity = -1) {
+  decreaseCartItemQuantity(menuItem, quantity = 1) {
     if (menuItem === undefined)
       throw new TypeError(
         "Missing parameter in the decrease of a cart item quantity. You must give a MenuItem instance."
@@ -60,8 +73,10 @@ export class UserCart {
       throw new TypeError(
         "Invalid type for quantity, this field must be a number."
       );
-    else if (quantity >= 0)
+    else if (quantity === 0)
       throw new Error("You must remove at least one item from the cart.");
+    else if (quantity < 0)
+      throw new Error("You must give a positive value to be removed.");
     else if (!this.#cartItems.has(menuItem))
       throw new Error(
         "The item you are trying to decrease the quantity does not exist in the cart."
@@ -69,7 +84,6 @@ export class UserCart {
 
     if (this.getCartItemQuantity(menuItem) === 1) {
       this.removeItemFromCart(menuItem);
-      this.#onCartUpdate(menuItem, quantity);
       return;
     }
 
@@ -80,11 +94,9 @@ export class UserCart {
       throw new Error("You are trying to remove more items than the cart has.");
     else if (newQuantity === 0) this.removeItemFromCart(menuItem);
     else this.#cartItems.set(menuItem, this.getCartItemQuantity(menuItem) - 1);
-
-    this.#onCartUpdate(menuItem, quantity);
   }
 
-  addItemToCart(menuItem) {
+  addItemToCart(menuItem, quantity = 1) {
     if (menuItem === undefined)
       throw new TypeError(
         "Missing parameter in the addition of a new item to cart. You must give a MenuItem instance."
@@ -95,7 +107,7 @@ export class UserCart {
       );
 
     if (this.#cartItems.has(menuItem)) return true;
-    else this.#cartItems.set(menuItem, 1);
+    else this.#cartItems.set(menuItem, quantity);
   }
 
   removeItemFromCart(menuItem) {
@@ -113,25 +125,6 @@ export class UserCart {
         "The item you are trying to remove from the cart does not exist."
       );
     else this.#cartItems.delete(menuItem);
-  }
-
-  addCartUpdateListener(callback) {
-    if (callback === undefined)
-      throw new TypeError(
-        "Missing parameter in the addCartUpdateListener method. You must give a callback function."
-      );
-    if (typeof callback !== "function")
-      throw new TypeError(
-        "Invalid type for the callback parameter in the addCartUpdateListener method. You must give a callback function."
-      );
-
-    this.#cardUpdateListeners.push(callback);
-  }
-
-  #onCartUpdate(cartItem, cartItemDifference) {
-    this.#cardUpdateListeners.forEach((listener) =>
-      listener(cartItem, cartItemDifference)
-    );
   }
 
   getCartItemQuantity(menuItem) {
