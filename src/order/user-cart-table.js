@@ -2,6 +2,8 @@ import { UserCart } from "../user-cart/user-cart.js";
 import { UserCartTableRow } from "./user-cart-table-row.js";
 
 export class UserCartTable {
+  #tableRows = [];
+
   constructor(userCart, tbodyElement) {
     if (userCart === undefined || tbodyElement === undefined)
       throw new TypeError(
@@ -23,6 +25,12 @@ export class UserCartTable {
     for (const cartItem of userCart.cartItems.entries()) {
       const tableRow = new UserCartTableRow(cartItem);
       tbodyElement.appendChild(tableRow.htmlElement);
+
+      this.#tableRows.push(tableRow);
     }
+  }
+
+  get tableRows() {
+    return this.#tableRows;
   }
 }
