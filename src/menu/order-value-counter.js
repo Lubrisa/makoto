@@ -1,30 +1,27 @@
 import { MenuItem } from "./menu-item.js";
-import { UserCart } from "../user-cart/user-cart.js";
+import { MenuTableController } from "./menu-table-controller.js";
 
 export class OrderValueCounter {
   #costCounterElement;
 
-  constructor(userCart, costCounterElement) {
-    if (userCart === undefined || costCounterElement === undefined)
+  constructor(menuTableController, costCounterElement) {
+    if (menuTableController === undefined || costCounterElement === undefined)
       throw new TypeError(
-        "Missing parameter in the creation of a new order value counter. You must give a user cart instance and a textual element to be the cost counter."
+        "Missing parameter in the creation of a new order value counter. You must give a MenuTableController instance and a textual element to be the cost counter."
       );
-    if (!(userCart instanceof UserCart))
+    else if (!(menuTableController instanceof MenuTableController))
       throw new TypeError(
-        "Invalid type for user cart, this field must be a UserCart instance."
+        "Invalid type for menu table controller, this field must be a MenuTableController instance."
       );
-    if (!(costCounterElement instanceof HTMLElement))
+    else if (!(costCounterElement instanceof HTMLElement))
       throw new TypeError(
         "Invalid type for cost counter element, this field must be an HTMLElement instance."
       );
 
     this.#costCounterElement = costCounterElement;
-    userCart.addCartUpdateListener(this.#updateCostCounter.bind(this));
-
-    const cartItems = userCart.cartItems;
-    cartItems.forEach((quantity, menuItem) => {
-      this.#updateCostCounter(menuItem, quantity);
-    });
+    menuTableController.addMenuTableUpdateListener(
+      this.#updateCostCounter.bind(this)
+    );
   }
 
   #updateCostCounter(menuItem, quantityDifference) {
