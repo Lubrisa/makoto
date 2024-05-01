@@ -41,6 +41,12 @@
       integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz"
       crossorigin="anonymous"
     ></script>
+    <script type="module" src="../user-cart/retrieve-user-cart.js"></script>
+    <script type="module" src="../user-cart/user-cart.js"></script>
+    <script type="module" src="./user-cart-table-row.js"></script>
+    <script type="module" src="./user-cart-table.js"></script>
+    <script type="module" src="./order-form-total-counter.js"></script>
+    <script type="module" src="./scripts.js"></script>
 
     <!-- page meta -->
     <meta name="author" content="Alexsander Lopes Jose Maria" />
@@ -111,21 +117,16 @@
     <main>
       <!-- form section -->
       <section id="form" class="container">
-        <h1
-          class="brand-font fw-bold text-center mt-4"
-        >
-          Quase lá!
-        </h1>
-        <h2 class="brand-font fw-bold text-center fs-4">Insira suas informações no formulário abaixo para finalizar seu pedido</h2>
+        <h1 class="brand-font fw-bold text-center mt-4">Quase lá!</h1>
+        <h2 class="brand-font fw-bold text-center fs-4">
+          Insira suas informações no formulário abaixo para finalizar seu pedido
+        </h2>
 
         <div
           class="row justify-content-center align-items-start gap-4 px-4 mt-5"
         >
           <!-- form using POST as the http method -->
-          <form
-            action="POST"
-            class="col-12 col-xg-5 border border border"
-          >
+          <form action="POST" class="col-12 col-xg-5 border border border">
             <!-- row for the name and phone inputs -->
             <div class="row mt-3 mb-3 mx-2">
               <!-- name collumn -->
@@ -189,7 +190,9 @@
             <!-- payment method row -->
             <div class="row">
               <div class="col-8 offset-2">
-                <label for="payment-method" class="form-label">Forma de pagamento</label>
+                <label for="payment-method" class="form-label"
+                  >Forma de pagamento</label
+                >
                 <select
                   name="payment-method"
                   id="payment-method"
@@ -214,7 +217,7 @@
               </div>
 
               <div class="col-6 d-flex align-items-center">
-                <p class="fs-4">Valor do Pedido: R$<span>179,97</span></p>
+                <p class="fs-4">Valor do Pedido: R$<span id="total-cost-counter">00,00</span></p>
               </div>
             </div>
           </form>
@@ -226,7 +229,9 @@
             <!-- table header (collumns names) -->
             <thead>
               <tr>
-                <th scope="colgroup" colspan="4" class="text-center fs-3">Seu carrinho</th>
+                <th scope="colgroup" colspan="4" class="text-center fs-3">
+                  Seu carrinho
+                </th>
               </tr>
               <!-- header row -->
               <tr>
@@ -238,35 +243,13 @@
               </tr>
             </thead>
             <!-- table body (collumns content) -->
-            <tbody class="fs-5 table-group-divider">
-              <!-- body row -->
-              <tr>
-                <!-- name collumn cell -->
-                <td>Mix</td>
-                <!-- price collumn cell -->
-                <td>59,99</td>
-                <!-- quantity ordered -->
-                <td>1</td>
-                <td>59,99</td>
-              </tr>
-              <tr>
-                <td>Lula a dorê</td>
-                <td>59,99</td>
-                <td>1</td>
-                <td>59,99</td>
-              </tr>
-              <tr>
-                <td>Sashimi com temaki</td>
-                <td>59,99</td>
-                <td>1</td>
-                <td>59,99</td>
-              </tr>
-              <tr>
-                <td>Temaki</td>
-                <td>59,99</td>
-                <td>1</td>
-                <td>59,99</td>
-              </tr>
+            <tbody class="fs-5 table-group-divider" id="user-cart-table">
+              <!-- <tr>
+                <td>${cartItem.menuItem.name}</td>
+                <td>${cartItem.menuItem.price}</td>
+                <td>${cartItem.quantity}</td>
+                <td>${cartItem.menuItem.price * cartItem.quantity}</td>
+              </tr> -->
             </tbody>
           </table>
         </div>
