@@ -28,7 +28,7 @@ export class UserCartTableRow {
     priceCell.textContent = menuItem.price;
     quantityCell.textContent = quantity;
     this.#total = menuItem.price * quantity;
-    totalCell.textContent = total;
+    totalCell.textContent = this.#total;
 
     tableRow.appendChild(nameCell);
     tableRow.appendChild(priceCell);
