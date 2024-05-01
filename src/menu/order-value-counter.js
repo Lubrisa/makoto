@@ -3,6 +3,7 @@ import { MenuTableController } from "./menu-table-controller.js";
 
 export class OrderValueCounter {
   #costCounterElement;
+  #currentPrice = 0;
 
   constructor(menuTableController, costCounterElement) {
     if (menuTableController === undefined || costCounterElement === undefined)
@@ -41,9 +42,9 @@ export class OrderValueCounter {
         "Invalid type for quantity difference, this field must be a number."
       );
 
-    const currentPrice = parseInt(this.#costCounterElement.textContent);
     const priceDifference = menuItem.price * quantityDifference;
-    const newPrice = (currentPrice + priceDifference).toFixed(2);
-    this.#costCounterElement.textContent = newPrice.toString();
+    const newPrice = this.#currentPrice + priceDifference;
+    this.#currentPrice = newPrice <= 0 ? 0 : newPrice;
+    this.#costCounterElement.textContent = this.#currentPrice.toFixed(2);
   }
 }
