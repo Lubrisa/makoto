@@ -1,6 +1,7 @@
 export class UserCartTableRow {
   #cartItem;
   #htmlElement;
+  #total = 0;
 
   constructor(cartItem) {
     if (cartItem === undefined)
@@ -26,7 +27,8 @@ export class UserCartTableRow {
     nameCell.textContent = menuItem.name;
     priceCell.textContent = menuItem.price;
     quantityCell.textContent = quantity;
-    totalCell.textContent = menuItem.price * quantity;
+    this.#total = menuItem.price * quantity;
+    totalCell.textContent = total;
 
     tableRow.appendChild(nameCell);
     tableRow.appendChild(priceCell);
@@ -38,5 +40,9 @@ export class UserCartTableRow {
 
   get cartItem() {
     return this.#cartItem;
+  }
+
+  get total() {
+    return this.#total;
   }
 }
