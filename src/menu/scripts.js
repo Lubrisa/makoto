@@ -1,10 +1,10 @@
 import { MenuItem } from "./menu-item.js";
 import { MenuTable } from "./menu-table.js";
 import { MenuTableController } from "./menu-table-controller.js";
-import { UserCart } from "./user-cart.js";
+import { UserCart } from "../user-cart/user-cart.js";
 import { OrderValueCounter } from "./order-value-counter.js";
-import { SaveUserCart } from "./save-user-cart.js";
-import { RetrieveUserCart } from "./retrieve-user-cart.js";
+import { SaveUserCart } from "../user-cart/save-user-cart.js";
+import { RetrieveUserCart } from "../user-cart/retrieve-user-cart.js";
 
 const menuItems = [
   new MenuItem(0, "Mix", 59.99),

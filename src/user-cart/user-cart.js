@@ -1,5 +1,5 @@
-import { MenuItem } from "./menu-item.js";
-import { MenuTableController } from "./menu-table-controller.js";
+import { MenuItem } from "../menu/menu-item.js";
+import { MenuTableController } from "../menu/menu-table-controller.js";
 
 export class UserCart {
   #cartItems = new Map();

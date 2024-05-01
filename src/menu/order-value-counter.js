@@ -1,5 +1,5 @@
 import { MenuItem } from "./menu-item.js";
-import { UserCart } from "./user-cart.js";
+import { UserCart } from "../user-cart/user-cart.js";
 
 export class OrderValueCounter {
   #costCounterElement;
