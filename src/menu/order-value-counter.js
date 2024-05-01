@@ -19,6 +19,9 @@ export class OrderValueCounter {
       );
 
     this.#costCounterElement = costCounterElement;
+    menuTableController.menuTableRows.forEach((menuTableRow) => {
+      this.#updateCostCounter(menuTableRow.menuItem, menuTableRow.count);
+    });
     menuTableController.addMenuTableUpdateListener(
       this.#updateCostCounter.bind(this)
     );
