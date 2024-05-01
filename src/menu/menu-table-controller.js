@@ -7,7 +7,7 @@ export class MenuTableController {
   #menuTableRows = [];
   #onMenuTableUpdateListeners = [];
 
-  constructor(menuTable) {
+  constructor(menuTable, menuItemsCount = new Map()) {
     if (menuTable === undefined)
       throw new TypeError(
         "Missing pararameter in the creation of a new MenuTableController. You must give a MenuTable instance."
@@ -16,24 +16,20 @@ export class MenuTableController {
       throw new TypeError(
         "Invalid type for menu table, this field must be a MenuTable instance."
       );
+    else if (!(menuItemsCount instanceof Map))
+      throw new TypeError(
+        "Invalid type for menu items count, this field must be a Map instance."
+      );
 
     this.#menuTable = menuTable;
+    this.#generateTableRows(menuItemsCount);
   }
 
-  renderMenuTableItems(
-    tbodyElement,
+  #generateTableRows(
     menuItemsCount = new Map(),
     menuItems = this.#menuTable.menuItems
   ) {
-    if (tbodyElement === undefined)
-      throw new TypeError(
-        "Missing parameter in the rendering of the MenuTableItems. You must give a tbody element."
-      );
-    else if (!(tbodyElement instanceof HTMLElement))
-      throw new TypeError(
-        "Invalid type for tbody element, this field must be an HTMLElement instance."
-      );
-    else if (!(menuItemsCount instanceof Map))
+    if (!(menuItemsCount instanceof Map))
       throw new TypeError(
         "Invalid type for menu items count, this field must be a Map instance."
       );
@@ -55,7 +51,20 @@ export class MenuTableController {
         this.#onTableUpdate(menuItem, -1);
       });
       this.#menuTableRows.push(menuTableRow);
+    });
+  }
 
+  renderMenuTableItems(tbodyElement) {
+    if (tbodyElement === undefined)
+      throw new TypeError(
+        "Missing parameter in the rendering of the MenuTableItems. You must give a tbody element."
+      );
+    else if (!(tbodyElement instanceof HTMLElement))
+      throw new TypeError(
+        "Invalid type for tbody element, this field must be an HTMLElement instance."
+      );
+
+    this.#menuTableRows.forEach((menuTableRow) => {
       tbodyElement.appendChild(menuTableRow.htmlElement);
     });
   }
