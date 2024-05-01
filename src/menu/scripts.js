@@ -2,6 +2,7 @@ import { MenuItem } from "./menu-item.js";
 import { MenuTable } from "./menu-table.js";
 import { MenuTableController } from "./menu-table-controller.js";
 import { UserCart } from "../user-cart/user-cart.js";
+import { UserCartController } from "../user-cart/user-cart-controller.js";
 import { OrderValueCounter } from "./order-value-counter.js";
 import { SaveUserCart } from "../user-cart/save-user-cart.js";
 import { RetrieveUserCart } from "../user-cart/retrieve-user-cart.js";
@@ -19,21 +20,22 @@ const menuItems = [
   new MenuItem(9, "Filadelfia", 59.99),
 ];
 
-const menuTable = new MenuTable(menuItems);
-
 const cartData = RetrieveUserCart();
-const menuItemsCount = new Map();
-if (cartData !== null)
-  cartData.forEach((cartItemData) =>
-    menuItemsCount.set(cartItemData.cartItem, cartItemData.quantity)
-  );
+const userCart = new UserCart(cartData, menuItems);
 
-const tbodyElement = document.querySelector("#menu-table");
+const menuTable = new MenuTable(menuItems);
 const menuTableController = new MenuTableController(menuTable);
-menuTableController.renderMenuTableItems(tbodyElement, menuItemsCount);
-const userCart = new UserCart(menuTableController);
+const tbodyElement = document.querySelector("#menu-table");
+menuTableController.renderMenuTableItems(tbodyElement, userCart.cartItems);
 
 const costCounterElement = document.querySelector("#cost-counter");
-const orderValueCounter = new OrderValueCounter(userCart, costCounterElement);
+const orderValueCounter = new OrderValueCounter(
+  menuTableController,
+  costCounterElement
+);
 
-userCart.addCartUpdateListener(() => SaveUserCart(userCart));
+const userCartController = new UserCartController(
+  userCart,
+  menuTableController
+);
+userCartController.addCartUpdateListener(() => SaveUserCart(userCart));
