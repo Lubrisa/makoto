@@ -24,9 +24,8 @@ const cartData = RetrieveUserCart();
 const userCart = new UserCart(cartData, menuItems);
 
 const menuTable = new MenuTable(menuItems);
-const menuTableController = new MenuTableController(menuTable);
+const menuTableController = new MenuTableController(menuTable, userCart.cartItems);
 const tbodyElement = document.querySelector("#menu-table");
-menuTableController.renderMenuTableItems(tbodyElement, userCart.cartItems);
 
 const costCounterElement = document.querySelector("#cost-counter");
 const orderValueCounter = new OrderValueCounter(
@@ -39,3 +38,5 @@ const userCartController = new UserCartController(
   menuTableController
 );
 userCartController.addCartUpdateListener(() => SaveUserCart(userCart));
+
+menuTableController.renderMenuTableItems(tbodyElement);
