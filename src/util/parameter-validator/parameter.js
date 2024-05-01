@@ -28,4 +28,8 @@ export class Parameter {
   get value() {
     return this.#value;
   }
+
+  get nameValuePair() {
+    return [this.name, this.value];
+  }
 }
