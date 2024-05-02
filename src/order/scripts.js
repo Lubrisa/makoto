@@ -39,9 +39,11 @@ phoneInput.addEventListener("input", (event) => {
   event.target.value = value;
 });
 
-document.querySelector("#finish-order-btn").addEventListener("click", (submitEvent) => {
-  submitEvent.preventDefault();
-  const paymentMethod = document.querySelector("#payment-method").value;
-  finishOrder(orderFormTotalCounter.total, paymentMethod);
-  window.location.href = "http://localhost:5500/src/order/finished";
-});
+document
+  .querySelector("#finish-order-btn")
+  .addEventListener("click", (submitEvent) => {
+    submitEvent.preventDefault();
+    const paymentMethod = document.querySelector("#payment-method").value;
+    finishOrder(orderFormTotalCounter.total, paymentMethod);
+    window.location.href = "http://localhost:5500/src/order/finished";
+  });
