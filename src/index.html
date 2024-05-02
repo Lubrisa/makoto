@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
   <head>
-    <!-- structural meta -->
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MAKOTO | A autentica culinária japonesa</title>
@@ -11,7 +10,6 @@
       type="image/png"
     />
 
-    <!-- font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
@@ -19,19 +17,19 @@
       rel="stylesheet"
     />
 
-    <!-- BootStrap  -->
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH"
       crossorigin="anonymous"
     />
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css"
+    />
 
-    <!-- stylesheets -->
     <link href="./style.css" rel="stylesheet" />
 
-    <!-- scripts -->
     <script
       defer
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"
@@ -39,7 +37,6 @@
       crossorigin="anonymous"
     ></script>
 
-    <!-- page meta -->
     <meta name="author" content="Alexsander Lopes Jose Maria" />
     <meta name="author" content="Henrique Hernani Ferreira" />
     <meta name="author" content="Luigi Campregher França" />
@@ -50,9 +47,7 @@
   </head>
   <body>
     <header>
-      <!-- navigation bar, contains the page internal links -->
       <nav class="navbar navbar-expand-md bg-black">
-        <!-- button used to open/close the navbar in narrower screens -->
         <button
           title="Toggle navigation"
           class="navbar-toggler ms-2"
@@ -75,32 +70,26 @@
           </svg>
         </button>
 
-        <!-- collapsable navbar (hidden in narrow screens) -->
         <div id="pageLinks" class="navbar-collapse collapse">
-          <!-- the links list -->
           <ul
             class="navbar-nav container d-flex justify-content-center gap-md-2 gap-lg-4 brand-font fs-5"
           >
-            <!-- navbar link -->
             <li class="nav-item">
-              <!-- anchor to the introduction section -->
               <a
                 href="#introduction"
                 class="nav-link link-light fs-3 ms-2 ms-md-0"
                 >Home</a
               >
             </li>
-            <!-- vertical rule (aesthetical separator) -->
+
             <div class="vr d-none d-md-inline"></div>
             <li class="nav-item">
-              <!-- anchor to the menu section -->
               <a href="#menu" class="nav-link link-light fs-3 ms-2 ms-md-0"
                 >Cardápio</a
               >
             </li>
             <div class="vr d-none d-md-inline"></div>
             <li class="nav-item">
-              <!-- anchor to the address section -->
               <a href="#address" class="nav-link link-light fs-3 ms-2 ms-md-0"
                 >Nossa localização</a
               >
@@ -119,12 +108,10 @@
     </header>
 
     <main>
-      <!-- introduction section -->
       <section
         id="introduction"
         class="container-fluid d-flex justify-content-center bg-black mb-2"
       >
-        <!-- introduction img -->
         <img
           src="../assets/images/makoto-logo.png"
           alt="Logo"
@@ -132,9 +119,10 @@
         />
       </section>
 
-      <!-- menu section -->
       <section id="menu">
-        <h1 class="text-center brand-font text-decoration-underline fw-bold mb-5">
+        <h1
+          class="text-center brand-font text-decoration-underline fw-bold mb-5"
+        >
           CARDÁPIO
         </h1>
         <h2 class="text-center fs-4 pb-3">
@@ -142,31 +130,24 @@
           <br />servidos a lá carte ou em festival
         </h2>
 
-        <!-- menu itens grid -->
         <section id="menu-options" class="bg-dark">
-          <!-- wrapper for the grid, limits it's lateral sizes -->
           <div class="container pb-3">
-            <!-- grid row -->
             <div class="row justify-content-center g-3">
-              <!-- card wrapper (makes the cards respect the grid gaps) -->
-              <!-- as the screen gets narrower the quantity of cards in the same row decreases -->
               <div class="col-6 col-md-4 col-lg-3">
                 <div class="card">
-                  <!-- card body, contains the card main content -->
                   <div class="card-body">
-                    <!-- food img -->
                     <img
                       src="https://www.tastingtable.com/img/gallery/20-japanese-dishes-you-need-to-try-at-least-once/l-intro-1664219638.jpg"
                       alt="Food"
                       class="card-img-top rounded mb-3"
                     />
-                    <!-- food name -->
+
                     <p
                       class="card-title text-center border-bottom border-top border-black fs-5"
                     >
                       Nome
                     </p>
-                    <!-- food description -->
+
                     <p class="card-text text-center">Descrição</p>
                   </div>
                 </div>
@@ -305,9 +286,7 @@
           </div>
         </section>
 
-        <!-- buy button section -->
         <section id="menu-button" class="d-flex justify-content-center mt-3">
-          <!-- text followed by a anchor to the menu page styled as a button -->
           <p class="text-center fs-4">
             Veja nosso cardápio completo e
             <a
@@ -320,9 +299,7 @@
         </section>
       </section>
 
-      <!-- address section -->
       <section id="address" class="container-fluid bg-black py-5">
-        <!-- title wrapper (adds borders to the text) -->
         <div
           class="text-center text-white border-top border-bottom border-white border-2 mb-5"
         >
@@ -332,11 +309,8 @@
           <h2 class="fs-4">Vamos adorar ter sua companhia!</h2>
         </div>
 
-        <!-- address images section -->
         <section id="address-images" class="container-fluid">
-          <!-- row with one img -->
           <div class="row align-items-center justify-content-center mb-4">
-            <!-- address img, resizes as the screen gets wider -->
             <img
               src="https://www.baressp.com.br/bares/fotos2/junji-sakamoto-1-baressp.jpg"
               alt="Building"
@@ -344,7 +318,6 @@
             />
           </div>
 
-          <!-- row with two imgs -->
           <div class="row align-items-center justify-content-center">
             <img
               src="https://youmustgo.com.br/wp-content/uploads/2015/12/makoto.jpeg"
@@ -359,7 +332,6 @@
           </div>
         </section>
 
-        <!-- institutional text section -->
         <section id="institutional-text" class="row justify-content-center">
           <div
             class="col-12 text-white text-center border-top border-bottom border-white pt-3 pb-2 my-5"
@@ -375,16 +347,13 @@
           </div>
         </section>
 
-        <!-- address info section -->
         <section id="address-info" class="col-12 text-white text-center">
-          <!-- Address -->
           <h3 class="fs-1 pb-2 pt-4 pt-sm-0 brand-font">Endereço</h3>
           <address class="fs-4">
             Av. Senador Pinheiro Machado,<br />Nº 1501 - Santos, SP
           </address>
-          <!-- iframe wrapper (centralizes the iframe) -->
+
           <div class="row justify-content-center">
-            <!-- iframe rendering a map using the Google Maps API -->
             <iframe
               src="https://www.google.com/maps/embed?pb=!4v1711917716157!6m8!1m7!1sRCvZ751v8MWV_5xVJrnCWQ!2m2!1d-23.96759578091208!2d-46.34553774260589!3f3.07!4f0!5f0.7820865974627469"
               width="400"
@@ -399,31 +368,26 @@
           </div>
         </section>
 
-        <!-- customers reply section -->
         <section id="customers-reply" class="mt-5 text-white text-center">
           <h3 class="fs-1 pb-2 pt-4 pt-sm-0 brand-font">
             Veja o que outros clientes têm a falar sobre nós!
           </h3>
 
-          <!-- reply carousel/slideshow -->
           <div
             id="replyCarousel"
             class="carousel slide d-flex justify-content-center mt-5"
           >
-            <!-- carousel content -->
             <div class="carousel-inner w-75">
-              <!-- carousel item -->
               <div class="carousel-item active">
-                <!-- customer quote -->
                 <q class="fs-3 text-break"
                   >Lorem ipsum dolor sit amet consectetur adipisicing elit.
                   Corporis expedita illum sit eligendi deleniti consequuntur
                   laboriosam adipisci eaque commodi id atque, odio dolorem
                   laborum molestiae, ex illo velit quibusdam dolores!</q
                 >
-                <!-- line break -->
+
                 <br />
-                <!-- customer name -->
+
                 <cite class="fs-4">- Foo</cite>
               </div>
               <div class="carousel-item">
@@ -487,34 +451,28 @@
     </main>
 
     <footer class="container-fluid bg-black text-white text-center py-4 mt-5">
-      <!-- footer content row -->
       <div class="row align-items-center">
-        <!-- phone info collumn -->
         <div class="col">
           <h3 class="fs-2 pb-4 text-decoration-underline brand-font">
             Telefones
           </h3>
-          <!-- phones -->
+
           <ul class="ps-0">
             <li>(13) 97417-7756</li>
             <li>(13) 98872-1262</li>
             <li>(13) 99112-2444</li>
           </ul>
         </div>
-        <!-- social media collumn -->
+
         <div class="col border-start border-end border-white">
           <h3 class="fs-2 pb-4 text-decoration-underline brand-font">
             Redes Sociais
           </h3>
-          <!-- social medias grid -->
+
           <div class="container ps-0 w-50">
-            <!-- row with the social media links -->
             <div class="row justify-content-center">
-              <!-- social media link that resizes in the grid to fit the screen -->
               <div class="col-6 col-sm-4 col-lg-2 pb-3">
-                <!-- anchor to the whatsapp -->
                 <a href="#" title="Whatsapp">
-                  <!-- whatsapp icon -->
                   <i class="bi bi-whatsapp text-white fs-2"></i>
                 </a>
               </div>
